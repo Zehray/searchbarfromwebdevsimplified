@@ -1,6 +1,8 @@
 const  userCardTemplate = document.querySelector("[data-user-template]")
 const  userCardContainer = document.querySelector("[data-user-cards-container]")
+const  searchInput = document.querySelector("[data-search]")
 
+searchInput.addEventListener("input") //this is going to run any time that we change anything
 
 fetch("https://jsonplaceholder.typicode.com/users") 
 .then(res => res.json()) //it's going to give us a response and we want to convert that res to json
@@ -49,3 +51,9 @@ we can add the content into those different sections.
 Now I've actually populated that HTML all i need to do is 
 add it to this user card section.
 (data-user-cards-container)  */
+
+/*
+next step is going to be dealing with input. 
+When we type in something we want to filter our list.
+we're saying data-search in input element.
+*/
