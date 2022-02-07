@@ -2,12 +2,21 @@ const  userCardTemplate = document.querySelector("[data-user-template]")
 const  userCardContainer = document.querySelector("[data-user-cards-container]")
 const  searchInput = document.querySelector("[data-search]")
 
-searchInput.addEventListener("input") //this is going to run any time that we change anything
+let users = []
+
+searchInput.addEventListener("input", (e) => {  //this is going to run any time that we change anything
+const value = e.target.value.toLowerCase()
+users.forEach(user => {
+    const isVisible = user.name.toLowerCase().includes(value) || user.email.toLowerCase().includes(value)
+    user.element.classList.toggle("hide", !isVisible)
+})
+})
 
 fetch("https://jsonplaceholder.typicode.com/users") 
 .then(res => res.json()) //it's going to give us a response and we want to convert that res to json
 .then(data => {
-    data.forEach(user => {   
+ 
+ users = data.map(user => {   
     const card = userCardTemplate.content.cloneNode(true).children[0] //this is(const card = userCardTemplate.content) doing is saying get the content inside our template which is all this information.
                                                     //and by saying cloneNode(true) we're saying clone this content as wall as all the content inside of it.
                                                                       //so it gets everything inside of this card.
@@ -17,6 +26,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     header.textContent = user.name
     body.textContent = user.email
     userCardContainer.append(card)
+    return { name: user.name, email: user.email, element: card}
    })
 }) //and we want to change that as well to get our data.
 /*
