@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Search Bar</title>
 </head>
 <body>
@@ -14,35 +14,15 @@
         <label for="search">Search Todos</label>
         <input type="search" id="search">
     </div>
-    <div class="user-cards">
+    <div class="user-cards" data-user-cards-container></div>
+    <!-- template allows you to create HTML 
+        that doesn't show up on the page but 
+        we can use it inside of our javascript -->
+    <template data-user-template>
         <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
+            <div class="header" data-header></div>
+            <div class="body" data-body></div>
         </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-        <div class="card">
-            <div class="header">My name</div>
-            <div class="body">email@gmail.com</div>
-        </div>
-    </div>
+    </template>
 </body>
 </html>
